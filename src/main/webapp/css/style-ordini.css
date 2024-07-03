@@ -1,0 +1,162 @@
+@charset "ISO-8859-1";
+
+*{
+	
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.spazio{
+	
+	 margin-top: 65px;
+}
+
+h2 {
+    margin-left: 50px;
+    color: #333;
+}
+
+.box{
+
+    display: flex;
+    justify-content: center;
+    
+}
+
+#b{
+
+    background-color: orange;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    
+}
+
+.container {
+    background-color: beige;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
+}
+
+.prodotto {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.prodotto .containerprodotto{
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.containerprodotto .immagine{
+
+    width: 30%;
+
+}
+
+
+.containerprodotto .immagine img{
+
+    max-width: 100%;
+
+}
+
+.prezzodata{
+
+     color: black;
+     margin: 10px;
+     margin-left: 30px;
+     font-size: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: orange;
+
+}
+
+.visualizzaBtn {
+    background-color: orange;
+    border-radius: 20px;
+    color: black;
+    position: relative;
+    left: 47%;
+}
+.a_colore:hover{
+	
+	color: black;
+}
+
+.visualizzaBtn a{
+
+    text-decoration: none;
+    color: black;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#utente{
+    background-color: #f9f9f9d2;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.437);
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+#utente button a{
+
+    text-decoration: none;
+    color: black;
+}
+
+@media (min-width:601px) and (max-width: 900px) {
+
+
+    .visualizzaBtn {
+
+        left: 42%;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    .containerprodotto .immagine{
+
+        width: 50%;
+    
+    }
+
+    .visualizzaBtn {
+
+        left: 30%;
+    }
+}
+
+
+

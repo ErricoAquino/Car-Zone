@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+
+*{
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body {
+    background-color: #f4f4f4;
+    height: 100vh;
+    margin: 0;
+}
+
+#form{
+	
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: orange;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 65px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.gruppo-log {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.gruppo-log label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gruppo-log input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+p {
+    margin-top: 15px;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 80%;
+    }
+
+    .gruppo-log {
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 90%;
+    }
+
+    p {
+        font-size: 80%;
+    }
+}
