@@ -30,7 +30,7 @@ public class ProductBean {
         this.Code = Code;
     }
     
-    public String getNome_auto() {
+    public String getNome() {
         return Nome_auto;
     }
 
