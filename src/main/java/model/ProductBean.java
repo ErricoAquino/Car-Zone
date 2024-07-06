@@ -30,11 +30,11 @@ public class ProductBean {
         this.Code = Code;
     }
     
-    public String getNome() {
+    public String getNome_auto() {
         return Nome_auto;
     }
 
-    public void setNome(String Nome_auto) {
+    public void setNome_auto(String Nome_auto) {
         this.Nome_auto = Nome_auto;
     }
 
@@ -180,13 +180,7 @@ public class ProductBean {
 
     public void setPrezzo(double Prezzo) {
         this.Prezzo = Prezzo;
-    }
-    
-    
-    
-    
-    
-    
+    }   
     
     
 }

@@ -66,7 +66,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
             System.out.println("Database connection established for doSave");
 
             preparedStatement = connection.prepareStatement(insertSQL);
-            preparedStatement.setString(1, product.getNome());
+            preparedStatement.setString(1, product.getNome_auto());
             preparedStatement.setInt(2, product.getAnno_auto());
             preparedStatement.setString(3, product.getGaranzia_passpropr());
             preparedStatement.setInt(4, product.getAnno_immatricolazione());
@@ -89,7 +89,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
             
 
             preparedStatement.executeUpdate();
-            System.out.println("Product saved: " + product.getNome());
+            System.out.println("Product saved: " + product.getNome_auto());
 
         } finally {
             try {
@@ -140,8 +140,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
         ResultSet rs = null;
         List<ProductBean> products = new ArrayList<>();
 
-        String selectSQL = "SELECT " + COLUMN_ID_PRODOTTO + ", " + COLUMN_NOME + ", " + COLUMN_ANNO + ", " + COLUMN_GARANZIA + ", " + COLUMN_ANNOIMM + ", " + COLUMN_CAMBIO + ", " + COLUMN_POTENZA + " , " + COLUMN_CHILOMETRAGGIO + ", " + COLUMN_CARBURANTE + " , " + COLUMN_CILINDRATA + " , " + COLUMN_TARGA + " , " + COLUMN_TELAIO + " , " + COLUMN_TRAZIONE + " , " + COLUMN_POSTI + " , " + COLUMN_EMISSIONE + " , " + COLUMN_EMISSIONICO2 + " , " + COLUMN_MATERIALEVOLANTE + " , " + COLUMN_BLUETOOTH + " , " + COLUMN_DESCRIZIONE + " ," + COLUMN_PREZZO + " , " + "FROM "+ TABLE_NAME;
-
+        String selectSQL = "SELECT " + COLUMN_ID_PRODOTTO + ", " + COLUMN_NOME + ", " + COLUMN_ANNO + ", " + COLUMN_GARANZIA + ", " + COLUMN_ANNOIMM + ", " + COLUMN_CAMBIO + ", " + COLUMN_POTENZA + ", " + COLUMN_CHILOMETRAGGIO + ", " + COLUMN_CARBURANTE + ", " + COLUMN_CILINDRATA + ", " + COLUMN_TARGA + ", " + COLUMN_TELAIO + ", " + COLUMN_TRAZIONE + ", " + COLUMN_POSTI + ", " + COLUMN_EMISSIONE + ", " + COLUMN_EMISSIONICO2 + ", " + COLUMN_MATERIALEVOLANTE + ", " + COLUMN_BLUETOOTH + ", " + COLUMN_DESCRIZIONE + ", " + COLUMN_PREZZO + " FROM " + TABLE_NAME;
 
         if (order != null && !order.isEmpty()) {
             selectSQL += " ORDER BY " + order;
@@ -154,26 +153,26 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
 
             while (rs.next()) {
                 ProductBean bean = new ProductBean();
-                bean.setCode(rs.getInt("ID_PRODOTTO"));
-                bean.setNome(rs.getString("Nome_auto"));
-                bean.setAnno_auto(rs.getInt("Anno_auto"));
-                bean.setGaranzia_passpropr(rs.getString("Garanzia_passpropr"));
-                bean.setAnno_immatricolazione(rs.getInt("Anno_immatricolazione"));
-                bean.setCambio(rs.getString("Cambio"));
-                bean.setPotenza(rs.getString("Potenza"));
-                bean.setChilometraggio(rs.getString("Chilometraggio"));
-                bean.setCarburante(rs.getString("Carburante"));
-                bean.setCilindrata(rs.getString("Cilindrata"));
-                bean.setTarga(rs.getString("Targa"));
-                bean.setN_telaio(rs.getInt("N_telaio"));
-                bean.setTrazione(rs.getString("Trazione"));
-                bean.setPosti(rs.getInt("Posti"));
-                bean.setClasse_emissione(rs.getString("Classe_emissione"));
-                bean.setEmissioni_co2(rs.getString("Emissioni_co2"));
-                bean.setMateriale_volante(rs.getString("Materiale_volante"));
-                bean.setBluetooth(rs.getString("Bluetooth"));
-                bean.setDescrizione(rs.getString("Descrizione"));
-                bean.setPrezzo(rs.getDouble("Prezzo"));
+                bean.setCode(rs.getInt(COLUMN_ID_PRODOTTO));
+                bean.setNome_auto(rs.getString(COLUMN_NOME));
+                bean.setAnno_auto(rs.getInt(COLUMN_ANNO));
+                bean.setGaranzia_passpropr(rs.getString(COLUMN_GARANZIA));
+                bean.setAnno_immatricolazione(rs.getInt(COLUMN_ANNOIMM));
+                bean.setCambio(rs.getString(COLUMN_CAMBIO));
+                bean.setPotenza(rs.getString(COLUMN_POTENZA));
+                bean.setChilometraggio(rs.getString(COLUMN_CHILOMETRAGGIO));
+                bean.setCarburante(rs.getString(COLUMN_CARBURANTE));
+                bean.setCilindrata(rs.getString(COLUMN_CILINDRATA));
+                bean.setTarga(rs.getString(COLUMN_TARGA));
+                bean.setN_telaio(rs.getInt(COLUMN_TELAIO));
+                bean.setTrazione(rs.getString(COLUMN_TRAZIONE));
+                bean.setPosti(rs.getInt(COLUMN_POSTI));
+                bean.setClasse_emissione(rs.getString(COLUMN_EMISSIONE));
+                bean.setEmissioni_co2(rs.getString(COLUMN_EMISSIONICO2));
+                bean.setMateriale_volante(rs.getString(COLUMN_MATERIALEVOLANTE));
+                bean.setBluetooth(rs.getString(COLUMN_BLUETOOTH));
+                bean.setDescrizione(rs.getString(COLUMN_DESCRIZIONE));
+                bean.setPrezzo(rs.getDouble(COLUMN_PREZZO));
 
                 products.add(bean);
             }
@@ -211,7 +210,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 bean.setCode(rs.getInt(COLUMN_ID_PRODOTTO));
-                bean.setNome(rs.getString(COLUMN_NOME));
+                bean.setNome_auto(rs.getString(COLUMN_NOME));
                 bean.setAnno_auto(rs.getInt(COLUMN_ANNO));
                 bean.setGaranzia_passpropr(rs.getString(COLUMN_GARANZIA));
                 bean.setAnno_immatricolazione(rs.getInt(COLUMN_ANNOIMM));
@@ -232,7 +231,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
                 bean.setPrezzo(rs.getInt(COLUMN_PREZZO));
                 
 
-                System.out.println("Retrieved product by key: " + bean.getNome() + ", " + bean.getAnno_auto()+ ", " + bean.getGaranzia_passpropr()+ ", " + bean.getAnno_immatricolazione() + " , " + bean.getCambio() + ", " + bean.getPotenza() + ", " + bean.getChilometraggio()+ ", " + bean.getCarburante()+ ", " + bean.getCilindrata() + " , " + bean.getTarga()+ ", " + bean.getN_telaio()+ ", " + bean.getTrazione()+ " , " + bean.getPosti()+ ", " + bean.getClasse_emissione()+ ", " + bean.getEmissioni_co2()+ ", " + bean.getMateriale_volante()+ ", " + bean.getBluetooth() + ", " + bean.getDescrizione() + ", " + bean.getPrezzo());
+                System.out.println("Retrieved product by key: " + bean.getNome_auto() + ", " + bean.getAnno_auto()+ ", " + bean.getGaranzia_passpropr()+ ", " + bean.getAnno_immatricolazione() + " , " + bean.getCambio() + ", " + bean.getPotenza() + ", " + bean.getChilometraggio()+ ", " + bean.getCarburante()+ ", " + bean.getCilindrata() + " , " + bean.getTarga()+ ", " + bean.getN_telaio()+ ", " + bean.getTrazione()+ " , " + bean.getPosti()+ ", " + bean.getClasse_emissione()+ ", " + bean.getEmissioni_co2()+ ", " + bean.getMateriale_volante()+ ", " + bean.getBluetooth() + ", " + bean.getDescrizione() + ", " + bean.getPrezzo());
             }
 
         } catch (SQLException e) {
