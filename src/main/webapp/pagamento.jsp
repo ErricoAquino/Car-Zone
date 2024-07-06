@@ -23,18 +23,18 @@
             <h2>Modifica dati di pagamento</h2>
             <div class="gruppo-reg">
                 <label for="ccn">Numero Della Carta</label>
-                <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+                <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,15}" autocomplete="cc-number" maxlength="15" placeholder="xxxx xxxx xxxx xxxx" required>
                 
             </div>
             <div class="gruppo-scacvv">
                <div id="scadenza">
                 <label for="numero"> Scadenza Carta</label>
-                <input type="date" id="numero" placeholder="Scadenza carta(MM/AA)" required>
+                <input type="text" id="numero" name="numero" maxlength="5" pattern="(0[1-9]|1[0-2])/(\d{2})" placeholder="Scadenza carta(MM/AA)" required>
                </div>
                 
                <div id="cvv">
                 <label for="password"> CVV</label>
-                <input type="cvv" id="password" name="password" placeholder="CVV" required>
+                <input type="cvv" id="password" name="password" maxlength="3" pattern="\3" placeholder="CVV" required>
               </div>
                 
             </div>
@@ -78,10 +78,7 @@
                 
             </div>
             
-            <div class="gruppo-reg">
-                <label for="email">Inserisci E-mail</label>
-                <input type="email" id="email" name="email" placeholder="Inserisci e-mail" required>
-            </div>
+            
             <button type="submit">Salva dati di pagamento</button>
         </form>
 

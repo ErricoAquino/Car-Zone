@@ -1,5 +1,3 @@
-@charset "ISO-8859-1";
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -15,30 +13,43 @@ body {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
-    border-radius: 4px;    
-    margin-bottom: 260px;
+    border-radius: 8px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
 .search-container {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-#searchBar, #searchDate {
-    flex: 1;
-    padding: 12px;
+#searchBarOrders, #searchBarUsers {
+    flex: 9;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    min-width: 150px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#startDateOrders, #endDateOrders, #startDateUsers, #endDateUsers {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#searchBarOrders:focus, #searchBarUsers:focus, #startDateOrders:focus, #endDateOrders:focus, #startDateUsers:focus, #endDateUsers:focus {
+    border-color: #000000;
+    outline: none;
 }
 
 table {
@@ -57,10 +68,12 @@ th, td {
     word-break: break-all;
     overflow-wrap: break-word;
     hyphens: auto;
+    font-size: 16px;
 }
 
 th {
     background-color: #f2f2f2;
+    color: #333;
 }
 
 tr:nth-child(even) {
@@ -72,14 +85,24 @@ tr:hover {
 }
 
 @media screen and (max-width: 768px) {
-	
-	.container {
- 
-    margin-bottom: 0;
-}
-	
     .search-container {
         flex-direction: column;
+    }
+
+    #searchBarOrders, #searchBarUsers {
+        flex: 1;
+        margin-bottom: 10px;
+    }
+
+    .date {
+        display: flex;
+        gap: 10px;
+    }
+
+    #startDateOrders, #endDateOrders, #startDateUsers, #endDateUsers {
+        flex: 1;
+        width: 100%;
+        margin-left: 0;
     }
 
     table, thead, tbody, th, td, tr {
@@ -114,3 +137,4 @@ tr:hover {
         border: 1px solid #ddd;
     }
 }
+

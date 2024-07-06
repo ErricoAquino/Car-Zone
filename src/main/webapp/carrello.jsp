@@ -82,7 +82,7 @@
                     </div>
                     <div class="costo-totale">$20.000</div>
                 </div>
-                <button class="pulsante">Paga ora</button>
+               <a href="./pagamentoeffettuato.jsp"> <button class="pulsante"> Paga ora</button></a>
             </div>
         </div>
        

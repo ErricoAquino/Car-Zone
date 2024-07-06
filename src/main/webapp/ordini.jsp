@@ -70,7 +70,7 @@
     
                 <div id="utente">
                     <button>
-                        <a href="./utente.jsp">Torna all'account utente</a>
+                        <a href="./utente.jsp">Torna all'account</a>
                     </button>
                 </div>
     

@@ -32,7 +32,7 @@
                 <input type="email" id="email" name="email" placeholder="inserisci e-mail" required>
             </div>
             <div class="gruppo-reg">
-                <label for="telefono">N Telefono</label>
+                <label for="telefono">Numero di telefono</label>
                 <input type="email" id="telefono" name="telefono" placeholder="inserisci il numero di telefono" required>
             </div>
             <div class="gruppo-reg">
