@@ -20,12 +20,25 @@
         <ul class="links">
             <li><a href="./home.jsp"> <img src="../icon/Home_10.svg" alt=""> Home</a></li>
             <li><a href="./carrello.jsp"> <img src="../icon/cart.svg" alt=""> Carrello</a></li>
-            <li><a href="./utente.jsp"> <img src="../icon/account3def.png" alt=""> Account</a></li> 
+            <li><a href="./utente.jsp"> <img src="../icon/account3def.png" alt=""> Account</a></li>
+            <%
+                UserBean user = (UserBean) session.getAttribute("user");
+                if (user != null && "admin".equals(user.getRole())) {
+            %>
             <li><a href="./amministratore.jsp"> <img src="../icon/setting-2.png" alt=""> Gestisci</a></li>
-         
+            <% } %>
         </ul>
+        <%
+            if (user == null) {
+        %>
         <a href="./login.jsp" class="action_btn">Login</a>
+        <%
+            } else {
+        %>
         <a href="logout" class="action_btn">Esci</a>
+        <%
+            }
+        %>
         <div class="toggle_btn">
             <i class="fa-solid fa-bars"></i>
         </div>
@@ -35,10 +48,14 @@
         <li><a href="./home.jsp">Home</a></li>
         <li><a href="./carrello.jsp">Carrello</a></li>
         <li><a href="./utente.jsp">Account</a></li>
+        <% if (user != null && "admin".equals(user.getRole())) { %>
         <li><a href="./amministratore.jsp">Gestisci</a></li>
+        <% } %>
+        <% if (user == null) { %>
         <li><a href="./login.jsp" class="action_btn">Login</a></li>
+        <% } else { %>
         <li><a href="logout" class="action_btn">Esci</a></li>
-       
+        <% } %>
     </div>
 </header>
 
@@ -56,3 +73,4 @@
 
 </body>
 </html>
+

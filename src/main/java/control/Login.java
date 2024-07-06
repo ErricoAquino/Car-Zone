@@ -73,7 +73,7 @@ public class Login extends HttpServlet {
                         registeredUser.setEmail(rs.getString(3));
                         registeredUser.setTelefono(rs.getString(5));
                         registeredUser.setRole(rs.getString(6));
-                        request.getSession().setAttribute("user ", registeredUser );
+                        request.getSession().setAttribute("user", registeredUser);
                         request.getSession().setAttribute("role", registeredUser.getRole());
                         request.getSession().setAttribute("email", rs.getString(3));
                         request.getSession().setAttribute("nome", rs.getString(1));
@@ -122,4 +122,5 @@ public class Login extends HttpServlet {
         return hashtext;
     }
 }
+
 
