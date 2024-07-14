@@ -31,6 +31,7 @@ body{
   align-items: center;
   overflow: auto;
   margin-left: 10%;
+  margin-bottom: 350px;
 }
 
 .titolo{
@@ -186,7 +187,7 @@ hr{
 
 .pulsante{
   margin-top: 5px;
-  width: 100%;
+  width: 30%;
   height: 40px;
   border: none;
   background: #ffffff;
@@ -195,6 +196,7 @@ hr{
   font-size: 16px;
   font-weight: 600;
   color: #000000;
+  margin-left: 420px;
 }
 
 .img-h3{
@@ -214,11 +216,16 @@ button:hover {
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .container-carrello {
     width: 90%;
     margin-left: 25px;
   }
+  
+  .pulsante{
+
+  margin-left: 140px;
+}
 
   .articoli-carrello {
     flex-direction: column;
@@ -283,7 +290,7 @@ button:hover {
   }
 }
 
-@media (min-width: 501px) and (max-width: 1200px) {
+@media (min-width: 701px) and (max-width: 1200px) {
   .container-carrello {
     width: 80%;
    
@@ -294,6 +301,11 @@ button:hover {
     align-items: flex-start;
     margin-top: 4%;
   }
+  
+   .pulsante{
+
+  margin-left: 310px;
+}
 
   .box-immagine, .info-prodotto, .prezzo {
     width: 100%;

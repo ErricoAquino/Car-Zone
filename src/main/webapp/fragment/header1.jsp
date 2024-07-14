@@ -16,10 +16,10 @@
 
 <header>
     <div class="navbar">
-        <div class="logo"><a href="./home.html">Car-Zone</a></div>
+        <div class="logo"><a href="./HomeServlet"">Car-Zone</a></div>
         <ul class="links">
-            <li><a href="./home.jsp"> <img src="../icon/Home_10.svg" alt=""> Home</a></li>
-            <li><a href="./carrello.jsp"> <img src="../icon/cart.svg" alt=""> Carrello</a></li>
+            <li><a href="./HomeServlet"> <img src="../icon/Home_10.svg" alt=""> Home</a></li>
+            <li><a href="./CarrelloServlet"> <img src="../icon/cart.svg" alt=""> Carrello</a></li>
             <li><a href="./utente.jsp"> <img src="../icon/account3def.png" alt=""> Account</a></li>
             <%
                 UserBean user = (UserBean) session.getAttribute("user");
@@ -45,7 +45,7 @@
     </div>
 
     <div class="dropdown_menu">
-        <li><a href="./home.jsp">Home</a></li>
+        <li><a href="./HomeServlet">Home</a></li>
         <li><a href="./carrello.jsp">Carrello</a></li>
         <li><a href="./utente.jsp">Account</a></li>
         <% if (user != null && "admin".equals(user.getRole())) { %>

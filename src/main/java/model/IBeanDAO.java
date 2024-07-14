@@ -1,7 +1,8 @@
 package model;
 
+
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Collection;
 
 public interface IBeanDAO<T> {
 	
@@ -11,5 +12,5 @@ public interface IBeanDAO<T> {
 
 	public T doRetrieveByKey(int code) throws SQLException;
 	
-	public List<T> doRetrieveAll(String order) throws SQLException;
+	public Collection<T> doRetrieveAll(String order) throws SQLException;
 }

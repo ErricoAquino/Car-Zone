@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,21 @@
     
     <title>Registrazione</title>
     <link rel="stylesheet" href="css/style-registrazione.css">
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var errorElement = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                errorElement.textContent = "Le password non corrispondono!";
+                return false;
+            } else {
+                errorElement.textContent = "";
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 
@@ -17,11 +32,11 @@
   <section id="form">
 
     <div class="container">
-        <form action="/submit_registration" method="POST">
+        <form action="Registrazione" method="POST" onsubmit="return validateForm()">
             <h2>Registrazione</h2>
             <div class="gruppo-reg">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="inserisci nome" required>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="inserisci nome" required>
             </div>
             <div class="gruppo-reg">
                 <label for="cognome">Cognome</label>
@@ -33,23 +48,40 @@
             </div>
             <div class="gruppo-reg">
                 <label for="telefono">Numero di telefono</label>
-                <input type="email" id="telefono" name="telefono" placeholder="inserisci il numero di telefono" required>
+                <input type="text" id="telefono" name="telefono" placeholder="inserisci il numero di telefono" required>
             </div>
             <div class="gruppo-reg">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="inserisci password" required>
             </div>
             <div class="gruppo-reg">
-                <label for="confirm_password">Conferma Password</label>
-                <input type="password" id="confirm_password" name="confirm_password" placeholder="conferma password" required>
+                <label for="confirmPassword">Conferma Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="conferma password" required>
+                 <span id="passwordError" class="error-message"></span>
             </div>
+
+            <!-- Gestione degli errori -->
+            <%
+                List<String> errors = (List<String>) request.getAttribute("errors");
+                if (errors != null && !errors.isEmpty()) {
+            %>
+                <div class="error-messages">
+                    <ul>
+                        <% for (String error : errors) { %>
+                            <li><%= error %></li>
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
+
             <button type="submit">Registrati</button>
         </form>
     </div>
     
-    </section> 
+  </section> 
     
-    <%@ include file= "./fragment/footer.jsp" %>
+  <%@ include file= "./fragment/footer.jsp" %>
     
 </body>
 </html>
+

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,48 +18,74 @@
 	   return;
   } %>
 <body>
-
+         
      <%@ include file= "./fragment/header1.jsp" %>
+     
+         <h2>Catalogo</h2>
+     
+      <% Boolean isAdminn = (Boolean) session.getAttribute("isAdmin");
+       if (isAdmin != null && isAdmin) {
+           List<model.ProductBean> products = (List<model.ProductBean>) session.getAttribute("products");
+           if (products != null) {
+               for (model.ProductBean prodotto : products) {
+    %>
+     
+     
      
    <div class="spazio">  
     
-    <h2>Catalogo</h2>
+    
     
         <div class="container">
             <div class="prodotto">
                 <img id="immagine" src="img/bmw.png" alt="nessuna immagine trovata">
                 <div class="divprodotto">
-                <h3>Prodotto 1</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni voluptatibus animi distinctio, delectus optio eius laborum dolorem id corporis eum.</p>
+                <h3><%= prodotto.getNome_auto() %></h3>
+                <p><%= prodotto.getDescrizione() %></p>
                 </div>
                 <div class="azione">
-                    <button class="visualizzaBtn"> <a class="a_colore" href="./prodotto.jsp">Visualizza</a></button>
+               
+                  <button class="visualizzaBtn"> <a class="a_colore" href="./ProdottoServlet?idProdotto=<%= prodotto.getID_PRODOTTO() %>">Visualizza</a></button>
                     <button class="modificaBtn">Modifica</button>
-                    <button class="eliminaBtn">Cancella</button>
+                    <form action="EliminaProdottoServlet" method="post" style="display:inline;">
+                       <input type="hidden" name="idProdotto" value="<%= prodotto.getID_PRODOTTO() %>">
+                         <button type="submit" class="eliminaBtn">Cancella</button>
+                   </form>
                 </div>
             </div>
-            <div class="prodotto">
-                 <img id="immagine" src="img/polo.png" alt="nessuna immagine trovata">
-                <div class="divprodotto">
-                <h3>Prodotto 1</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni voluptatibus animi distinctio, delectus optio eius laborum dolorem id corporis eum.</p>
-                </div>
-                <div class="azione">
-                  
-                    <button class="visualizzaBtn"> <a class="a_colore" href="./prodotto.jsp">Visualizza</a></button>
-                    <button class="modificaBtn">Modifica</button>
-                    <button class="eliminaBtn">Cancella</button> 
-                </div>
-            </div>
+         </div>
+       </div>
+       
+       <% String message = (String) session.getAttribute("message");
+   if (message != null) { %>
+   <div class="message"><%= message %></div>
+   <% session.removeAttribute("message");
+} %>
+<% String error = (String) session.getAttribute("error");
+   if (error != null) { %>
+   <div class="error"><%= error %></div>
+   <% session.removeAttribute("error");
+} %>
+       
+        
+            <% 
+               }
+           } else {
+               out.println("<p>Nessun prodotto trovato.</p>");
+           }
+       } else {
+           response.sendRedirect(request.getContextPath()+ "/login.jsp");
+           return;
+       }
+    %>
+
 
             <!-- Pulsante per aggiungere un nuovo prodotto -->
             <div class="agg-prodotto">
                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./nuovoprodotto.jsp">Aggiungi prodotto</a></button>
-                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./ammricercaordini.jsp">Visualizza ordini</a></button>
+                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./AdminServlet">Visualizza utenti e ordini</a></button>
               
-            </div>
-        </div>
-        
+         
         </div>
         <a href="logout">Esci</a>
         <%@ include file= "./fragment/footer.jsp" %>

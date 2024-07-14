@@ -54,9 +54,19 @@ public class UserBean implements Serializable {
 		return role;
 	}
 	
+	public void setCode(int newCode) {
+		Code = newCode;
+	}
+	
+	public int getCode() {
+		return Code;
+	}
+	
+	
 	private String email;
 	private String nome;
 	private String cognome;
 	private String telefono;
 	private String role;
+	private int Code;
 }

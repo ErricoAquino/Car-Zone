@@ -35,16 +35,16 @@
          <div class="casella">
             <div class="imgtesto">
                 <img src="icon/password.svg" alt="Non ho trovato nessuna immagine">
-                <p class="paragrafo">Modifica dati: nome, cognome, e-mail, telefono e password</p>
+                <p class="paragrafo">Visualizza e modifica dati: nome, cognome, e-mail, telefono e password</p>
              </div>
 
-           <a href="./sicurezza.jsp"><button class="visualizza">Impostazioni di sicurezza</button></a>
+           <a href="./sicurezza"><button class="visualizza">Impostazioni di sicurezza</button></a>
           </div>
        
          <div class="casella">
             <div class="imgtesto">
                 <img src="icon/credit-card.svg" alt="Non ho trovato nessuna immagine">
-                <p class="paragrafo">Modifica i dati di pagamento</p>
+                <p class="paragrafo">Inserisci i dati di pagamento</p>
              </div>
 
           <a href="pagamento.jsp"><button class="visualizza">Metodo di pagamento</button></a>

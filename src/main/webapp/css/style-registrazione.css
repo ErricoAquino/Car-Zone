@@ -68,6 +68,12 @@ button:hover {
     background-color: #ffffffab;
 }
 
+.error-message {
+            color: red;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
 /* Media query per dispositivi mobili */
 @media (max-width: 600px) {
     .container {

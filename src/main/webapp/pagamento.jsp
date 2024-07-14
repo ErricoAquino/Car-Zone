@@ -20,7 +20,7 @@
 
     <div class="container">
         <form action="/submit_registration" method="POST">
-            <h2>Modifica dati di pagamento</h2>
+            <h2>Dati di pagamento</h2>
             <div class="gruppo-reg">
                 <label for="ccn">Numero Della Carta</label>
                 <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,15}" autocomplete="cc-number" maxlength="15" placeholder="xxxx xxxx xxxx xxxx" required>

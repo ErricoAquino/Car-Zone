@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CartBean;
 import model.DriverManagerConnectionpool;
 import model.UserBean;
 
@@ -57,34 +58,43 @@ public class Login extends HttpServlet {
         
         try {
             Connection con = DriverManagerConnectionpool.getConnection();
-            String sql = "SELECT Nome, Cognome, Email, password, Telefono, Ruolo FROM USERACCOUNT";
+            String sql = "SELECT ID_ACCOUNT, Nome, Cognome, Email, password, Telefono, Ruolo FROM USERACCOUNT";
             
             Statement s = con.createStatement();
             ResultSet rs = s.executeQuery(sql);
             
             while (rs.next()) {
-                if (email.compareTo(rs.getString(3)) == 0) {
+                if (email.compareTo(rs.getString(4)) == 0) {
                     String psw = checkPsw(password);
-                    if (psw.compareTo(rs.getString(4)) == 0) {
+                    if (psw.compareTo(rs.getString(5)) == 0) {
                         control = true;
                         UserBean registeredUser = new UserBean();
-                        registeredUser.setNome(rs.getString(1));
-                        registeredUser.setCognome(rs.getString(2));
-                        registeredUser.setEmail(rs.getString(3));
-                        registeredUser.setTelefono(rs.getString(5));
-                        registeredUser.setRole(rs.getString(6));
-                        request.getSession().setAttribute("user", registeredUser);
-                        request.getSession().setAttribute("role", registeredUser.getRole());
-                        request.getSession().setAttribute("email", rs.getString(3));
-                        request.getSession().setAttribute("nome", rs.getString(1));
+                        registeredUser.setCode(rs.getInt(1));
+                        registeredUser.setNome(rs.getString(2));
+                        registeredUser.setCognome(rs.getString(3));
+                        registeredUser.setEmail(rs.getString(4));
+                        registeredUser.setTelefono(rs.getString(6));
+                        registeredUser.setRole(rs.getString(7));
+                        
+                        
+                        request.getSession(true).setAttribute("user", registeredUser);
+                        request.getSession(true).setAttribute("role", registeredUser.getRole());
+                        request.getSession(true).setAttribute("email", rs.getString(4));
+                        request.getSession(true).setAttribute("nome", rs.getString(2));
+                        request.getSession().setAttribute("ID_ACCOUNT", rs.getInt(1));
+                        
+                        
+                        //Inizializzazione del carrello per l'utente
+                        CartBean userCart = new CartBean();
+                        request.getSession(true).setAttribute("cart", userCart);
                         
                         if ("admin".equals(registeredUser.getRole())) {
-                            request.getSession().setAttribute("isAdmin", Boolean.TRUE);
+                            request.getSession(true).setAttribute("isAdmin", Boolean.TRUE);
                         } else {
-                            request.getSession().setAttribute("isAdmin", Boolean.FALSE);
+                            request.getSession(true).setAttribute("isAdmin", Boolean.FALSE);
                         }
                         
-                        redirectedPage = "/home.jsp";
+                        redirectedPage = "/HomeServlet";
                         DriverManagerConnectionpool.releaseConnection(con);
                         break;
                     }

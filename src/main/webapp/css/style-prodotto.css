@@ -41,7 +41,7 @@
     background-color: orange;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.633);
-    width: 300px;
+    width: 350px;
     height: 400px;
     text-align: center;
     margin-bottom: 30px;
@@ -94,6 +94,15 @@ button{
     height: 30px;
     margin-top: 30px;
 }
+
+#a{
+	
+    color: black;
+    border: none;
+    height: 30px;
+    margin-top: 30px;
+}
+
 
 button:hover{
 
