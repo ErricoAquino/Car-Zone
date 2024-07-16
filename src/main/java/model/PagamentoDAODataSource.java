@@ -31,6 +31,7 @@ public class PagamentoDAODataSource implements IBeanDAO<PagamentoBean> {
     }
 
     private static final String TABLE_NAME = "PAGAMENTO";
+    private static final String COLUMN_ID_PAGAMENTO= "ID_PAGAMENTO";
     private static final String COLUMN_NOME = "Nome";
     private static final String COLUMN_COGNOME = "Cognome";
     private static final String COLUMN_NUMERO_CARTA = "Numero_carta";
@@ -77,6 +78,71 @@ public class PagamentoDAODataSource implements IBeanDAO<PagamentoBean> {
             }
         }
     }
+    
+    public synchronized int doEdit(PagamentoBean pagamento) throws SQLException {
+
+    	int output = 0;
+    		
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String updateSQL = "UPDATE " + TABLE_NAME + " SET " +
+        		COLUMN_NOME + " = ?, " +
+        		COLUMN_COGNOME + " = ?, " +
+        		COLUMN_NUMERO_CARTA + " = ?, " +
+        		COLUMN_DATA_SCADENZA + " = ?, " +
+        		//COLUMN_CVV + " = ?, " +
+        		COLUMN_CITTA + " = ?, " +
+        		COLUMN_CAP + " = ?, " +
+        		COLUMN_VIA + " = ?, " +
+        		COLUMN_PROVINCIA + " = ? " +
+                " WHERE ID_ACCOUNT = ? "; 
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(updateSQL);
+            
+            preparedStatement.setString(1, pagamento.getNome());
+            preparedStatement.setString(2, pagamento.getCognome());
+            preparedStatement.setString(3, pagamento.getNumero_carta());
+            preparedStatement.setString(4, pagamento.getData_scadenza());
+            //preparedStatement.setString(5, pagamento.getCvv());
+            preparedStatement.setString(5, pagamento.getCitta());
+            preparedStatement.setString(6, pagamento.getCAP());
+            preparedStatement.setString(7, pagamento.getVia());
+            preparedStatement.setString(8, pagamento.getProvincia());
+            
+            
+            // Set the WHERE condition parameter
+            preparedStatement.setInt(9, pagamento.getCode());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Product updated: " + pagamento.getNome());
+            } else {
+                System.out.println("No product found with name: " + pagamento.getNome());
+            }
+            
+            output = rowsAffected;
+
+        } 
+        catch (Exception e) {
+        	System.out.println(e.toString());
+		}
+        finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        
+        return output;
+    }
+
 
     @Override
     public synchronized boolean doDelete(int idAccount) throws SQLException {
@@ -186,8 +252,7 @@ public class PagamentoDAODataSource implements IBeanDAO<PagamentoBean> {
                 bean.setVia(rs.getString(COLUMN_VIA));
                 bean.setProvincia(rs.getString(COLUMN_PROVINCIA));
                 bean.setCode(rs.getInt(COLUMN_USERACCOUNT));
-
-       
+                bean.setID_PAGAMENTO(rs.getInt(COLUMN_ID_PAGAMENTO));
             }
         } catch (SQLException e) {
             e.printStackTrace();

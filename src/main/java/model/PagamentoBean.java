@@ -7,6 +7,7 @@ public class PagamentoBean implements Serializable {
 	
 	public PagamentoBean() {
 		
+		
 		this.Nome="";
 		this.Cognome="";
 		this.Numero_carta="";
@@ -17,6 +18,14 @@ public class PagamentoBean implements Serializable {
 		this.Via="";
 		this.Provincia="";
 	}
+	
+	public int getID_PAGAMENTO() {
+        return ID_PAGAMENTO;
+    }
+
+    public void setID_PAGAMENTO(int ID_PAGAMENTO) {
+        this.ID_PAGAMENTO = ID_PAGAMENTO;
+    }
 	
 	public void setNome(String Nome) {
 		this.Nome = Nome;
@@ -99,7 +108,7 @@ public class PagamentoBean implements Serializable {
 		return Code;
 	}
 	
-
+	private int ID_PAGAMENTO;
 	private String Nome;
 	private String Cognome;
 	private String Numero_carta;

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="model.ProductBean"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,68 +16,76 @@
  
     <div class="container">
         <h1>Inserisci nuova auto nel catalogo</h1>
-        <form id="catalogo" enctype="multipart/form-data">
+        <form action="NuovoProdottoServlet" method="POST" id="catalogo">
+
+        
+        <input type="hidden" name="ID_PRODOTTO" value="">
+            
+            
             <label for="itemNome">Nome auto</label>
-            <input type="text" id="itemNome" name="itemNome" required>
+            <input type="text" id="itemNome" name="Nome_auto" value="" required>
             
             <label for="itemAnno">Anno auto</label>
-            <input type="text" id="itemAnno" name="itemNome" required>
+            <input type="text" id="itemAnno" name="Anno_auto" value="" required>
 
             <label for="itemGaranzia">Garanzia e costo passaggio di proprietà </label>
-            <input type="text" id="itemGaranzia" name="itemNome" required>
+            <input type="text" id="itemGaranzia" name="Garanzia_passpropr" value="" required>
 
             <label for="itemImmatricolazione">Anno immatricolazione</label>
-            <input type="text" id="itemImmatricolazione" name="itemNome" required>
+            <input type="text" id="itemImmatricolazione" name="Anno_immatricolazione" value="" required>
 
             <label for="itemCambio">Cambio</label>
-            <input type="text" id="itemCambio" name="itemNome" required>
+            <input type="text" id="itemCambio" name="Cambio" value="" required>
             
             <label for="itemPotenza">Potenza</label>
-            <input type="text" id="itemPotenza" name="itemNome" required>
+            <input type="text" id="itemPotenza" name="Potenza" value="" required>
 
             <label for="itemChilometri">Chilometraggio</label>
-            <input type="text" id="itemChilometri" name="itemNome" required>
+            <input type="text" id="itemChilometri" name="Chilometraggio" value="" required>
 
             <label for="itemCarburante">Carburante</label>
-            <input type="text" id="itemCarburante" name="itemNome" required>
+            <input type="text" id="itemCarburante" name="Carburante" value="" required>
 
             <label for="itemCilindrata">Cilindrata</label>
-            <input type="text" id="itemCilindrata" name="itemNome" required>
+            <input type="text" id="itemCilindrata" name="Cilindrata" value="" required>
 
             <label for="itemTarga">Targa</label>
-            <input type="text" id="itemTarga" name="itemNome" required>
+            <input type="text" id="itemTarga" name="Targa" value="" required>
 
             <label for="itemTelaio">N. telaio</label>
-            <input type="text" id="itemTelaio" name="itemNome" required>
+            <input type="text" id="itemTelaio" name="N_telaio" value="" required>
 
             <label for="itemTrazione">Trazione</label>
-            <input type="text" id="itemTrazione" name="itemNome" required>
+            <input type="text" id="itemTrazione" name="Trazione" value="" required>
 
             <label for="itemPosti">Posti</label>
-            <input type="text" id="itemPosti" name="itemNome" required>
+            <input type="text" id="itemPosti" name="Posti" value="" required>
 
             <label for="itemClassi">Classe di emissione</label>
-            <input type="text" id="itemClassi" name="itemNome" required>
+            <input type="text" id="itemClassi" name="Classe_emissione" value="" required>
 
             <label for="itemEmissioni">Emissioni CO2</label>
-            <input type="text" id="itemEmissioni" name="itemNome" required>
+            <input type="text" id="itemEmissioni" name="Emissioni_co2" value="" required>
 
             <label for="itemMateriale">Materiale volante</label>
-            <input type="text" id="itemMateriale" name="itemNome" required>
+            <input type="text" id="itemMateriale" name="Materiale_volante" value="" required>
 
             <label for="itemBluetooth">Bluetooth</label>
-            <input type="text" id="itemBluetooth" name="itemNome" required>
+            <input type="text" id="itemBluetooth" name="Bluetooth" value="" required>
 
             <label for="itemDescrizione">Descrizione</label>
-            <textarea id="itemDescrizione" name="itemDescrizione" required></textarea>
+            <textarea id="itemDescrizione" name="Descrizione" required></textarea>
 
             <label for="itemPrezzo">Prezzo</label>
-            <input type="number" id="itemPrezzo" name="itemPrezzo" required>
+            <input type="number" id="itemPrezzo" name="Prezzo" required>
             
-            <label for="itemImmagine">Foto del prodotto</label>
-            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/*" required>
+            
+            <!-- <label for="itemImmagine">Foto del prodotto</label>
+            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/*" required> -->
             
             <button class= "aggiungi" type="submit">Aggiungi</button>
+            
+           
         </form>
     </div>
     

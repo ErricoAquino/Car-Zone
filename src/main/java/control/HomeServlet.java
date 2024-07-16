@@ -55,7 +55,8 @@ public class HomeServlet extends HttpServlet {
         }
 
         // Reindirizzamento alla home.jsp dopo aver configurato la sessione
-        response.sendRedirect(request.getContextPath() + "/home.jsp");
+        request.getRequestDispatcher("/home.jsp").forward(request, response);
+       //response.sendRedirect(request.getContextPath() + "/home.jsp");
     }
 
 

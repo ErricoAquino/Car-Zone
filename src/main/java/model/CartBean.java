@@ -36,8 +36,7 @@ public class CartBean {
         while (iterator.hasNext()) {
             CartItemBean item = iterator.next();
             if (item.getProductId() == productId) {
-            	iterator.remove();	
-                
+                iterator.remove();
                 return;
             }
         }
@@ -71,6 +70,12 @@ public class CartBean {
     public void emptyCart() {
         items.clear();
     }
+
+    public double getTotale() {
+        double totale = 0;
+        for (CartItemBean item : items) {
+            totale += item.getQuantita() * item.getProdotto().getPrezzo();
+        }
+        return totale;
+    }
 }
-
-

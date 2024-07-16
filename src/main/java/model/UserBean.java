@@ -55,11 +55,11 @@ public class UserBean implements Serializable {
 	}
 	
 	public void setCode(int newCode) {
-		Code = newCode;
+		code = newCode;
 	}
 	
 	public int getCode() {
-		return Code;
+		return code;
 	}
 	
 	
@@ -68,5 +68,5 @@ public class UserBean implements Serializable {
 	private String cognome;
 	private String telefono;
 	private String role;
-	private int Code;
+	private int code;
 }

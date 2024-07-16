@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List"%>
+    pageEncoding="ISO-8859-1" import="java.util.List" import="model.ProductBean"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +46,7 @@
                 <div class="azione">
                
                   <button class="visualizzaBtn"> <a class="a_colore" href="./ProdottoServlet?idProdotto=<%= prodotto.getID_PRODOTTO() %>">Visualizza</a></button>
-                    <button class="modificaBtn">Modifica</button>
+                    <button class="modificaBtn"><a class="a_colore" href="./ModificaProdottoServlet?idProdotto=<%= prodotto.getID_PRODOTTO() %>">Modifica</a></button>
                     <form action="EliminaProdottoServlet" method="post" style="display:inline;">
                        <input type="hidden" name="idProdotto" value="<%= prodotto.getID_PRODOTTO() %>">
                          <button type="submit" class="eliminaBtn">Cancella</button>
@@ -54,7 +54,9 @@
                 </div>
             </div>
          </div>
+         
        </div>
+      
        
        <% String message = (String) session.getAttribute("message");
    if (message != null) { %>
@@ -81,12 +83,16 @@
 
 
             <!-- Pulsante per aggiungere un nuovo prodotto -->
-            <div class="agg-prodotto">
-                <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./nuovoprodotto.jsp">Aggiungi prodotto</a></button>
-                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./AdminServlet">Visualizza utenti e ordini</a></button>
+            
+              <div class="agg-prodotto">
+                <button class="aggiungiProdottoBtn"><a class="a_colore" href="./NuovoProdottoServlet">Nuovo prodotto</a></button>
+                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./UsersServlet">Visualizza utenti e ordini</a></button>
+               
+                        
               
          
         </div>
+           
         <a href="logout">Esci</a>
         <%@ include file= "./fragment/footer.jsp" %>
     

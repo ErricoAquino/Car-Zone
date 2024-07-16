@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -56,6 +57,8 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
 
     @Override
     public synchronized void doSave(ProductBean product) throws SQLException {
+    	
+    	
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -64,7 +67,8 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
 
         try {
             connection = ds.getConnection();
-            preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement = connection.prepareStatement(insertSQL,
+                    Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, product.getNome_auto());
             preparedStatement.setInt(2, product.getAnno_auto());
             preparedStatement.setString(3, product.getGaranzia_passpropr());
@@ -87,6 +91,16 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
 
 
             preparedStatement.executeUpdate();
+            
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                	product.setID_PRODOTTO(generatedKeys.getInt(1));
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+            
             System.out.println("Product saved: " + product.getNome_auto());
 
         } finally {
@@ -98,7 +112,93 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
                     connection.close();
             }
         }
+        
+     
     }
+    
+   
+    public synchronized int doEdit(ProductBean product) throws SQLException {
+
+    	int output = 0;
+    		
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String updateSQL = "UPDATE " + TABLE_NAME + " SET " +
+                COLUMN_ANNO + " = ?, " +
+                COLUMN_GARANZIA + " = ?, " +
+                COLUMN_ANNOIMM + " = ?, " +
+                COLUMN_CAMBIO + " = ?, " +
+                COLUMN_POTENZA + " = ?, " +
+                COLUMN_CHILOMETRAGGIO + " = ?, " +
+                COLUMN_CARBURANTE + " = ?, " +
+                COLUMN_CILINDRATA + " = ?, " +
+                COLUMN_TARGA + " = ?, " +
+                COLUMN_TELAIO + " = ?, " +
+                COLUMN_TRAZIONE + " = ?, " +
+                COLUMN_POSTI + " = ?, " +
+                COLUMN_EMISSIONE + " = ?, " +
+                COLUMN_EMISSIONICO2 + " = ?, " +
+                COLUMN_MATERIALEVOLANTE + " = ?, " +
+                COLUMN_BLUETOOTH + " = ?, " +
+                COLUMN_DESCRIZIONE + " = ?, " +
+                COLUMN_PREZZO + " = ?, " +
+                COLUMN_NOME + " = ? " +
+                " WHERE ID_PRODOTTO = ? "; 
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(updateSQL);
+            
+            preparedStatement.setInt(1, product.getAnno_auto());
+            preparedStatement.setString(2, product.getGaranzia_passpropr());
+            preparedStatement.setInt(3, product.getAnno_immatricolazione());
+            preparedStatement.setString(4, product.getCambio());
+            preparedStatement.setString(5, product.getPotenza());
+            preparedStatement.setString(6, product.getChilometraggio());
+            preparedStatement.setString(7, product.getCarburante());
+            preparedStatement.setString(8, product.getCilindrata());
+            preparedStatement.setString(9, product.getTarga());
+            preparedStatement.setInt(10, product.getN_telaio());
+            preparedStatement.setString(11, product.getTrazione());
+            preparedStatement.setInt(12, product.getPosti());
+            preparedStatement.setString(13, product.getClasse_emissione());
+            preparedStatement.setString(14, product.getEmissioni_co2());
+            preparedStatement.setString(15, product.getMateriale_volante());
+            preparedStatement.setString(16, product.getBluetooth());
+            preparedStatement.setString(17, product.getDescrizione());
+            preparedStatement.setDouble(18, product.getPrezzo());
+            preparedStatement.setString(19, product.getNome_auto());
+            // Set the WHERE condition parameter
+            preparedStatement.setString(20, ""+product.getID_PRODOTTO());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Product updated: " + product.getNome_auto());
+            } else {
+                System.out.println("No product found with name: " + product.getNome_auto());
+            }
+            
+            output = rowsAffected;
+
+        } 
+        catch (Exception e) {
+        	System.out.println(e.toString());
+		}
+        finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        
+        return output;
+    }
+
 
     @Override
     public synchronized boolean doDelete(int idProdotto) throws SQLException {
@@ -256,3 +356,4 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
         return bean;
     }
 }
+

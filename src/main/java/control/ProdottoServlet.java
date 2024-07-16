@@ -60,7 +60,8 @@ public class ProdottoServlet extends HttpServlet {
         }
 
         // Reindirizzamento alla home.jsp dopo aver configurato la sessione
-        response.sendRedirect(request.getContextPath() + "/prodotto.jsp");
+        //response.sendRedirect(request.getContextPath() + "/prodotto.jsp");
+        request.getRequestDispatcher("/prodotto.jsp").forward(request, response);
     }
 
 
