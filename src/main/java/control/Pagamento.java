@@ -22,12 +22,12 @@ public class Pagamento extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("loggedInUser") == null) {
+        if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
-        UserBean user = (UserBean) session.getAttribute("loggedInUser");
+        UserBean user = (UserBean) session.getAttribute("user");
 
         String numeroCarta = request.getParameter("Numero_carta");
         String dataScadenza = request.getParameter("Data_scadenza");

@@ -1,5 +1,7 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.List, model.OrdiniBean, model.OrdiniDAODataSource, model.ProductBean, java.sql.SQLException"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +18,28 @@
     <%@ include file= "./fragment/header1.jsp" %>
   
    <div class="spazio">
-  
+        
+        <div class="spazio">
     <h2>Ordini effettuati</h2>
+    
+    <%-- Visualizza il numero totale di ordini effettuati --%>
+            <%
+                OrdiniDAODataSource ordiniDAO = new OrdiniDAODataSource();
+                List<OrdiniBean> ordiniList = null;
+                try {
+                    ordiniList = ordiniDAO.doRetrieveAll("DESC"); // "DESC" o "ASC" a seconda dell'ordine desiderato
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    // Gestisci l'errore, ad esempio, mostrando un messaggio all'utente
+                }
+                int idAccountFromSession = (int) session.getAttribute("ID_ACCOUNT");
+            %>
+
+       </div>
+       
+       <% if (ordiniList != null && !ordiniList.isEmpty()) { %>
+            <% for (OrdiniBean ordine : ordiniList) { %>
+            <%if (ordine.getAccount() == idAccountFromSession){%>
 
     <div class="box">
 
@@ -35,9 +57,9 @@
                         </div>
         
                         <div class="info">
-                            <h4>Prodotto 1</h4>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis tempora vero eligendi amet eaque dolorem!</p>
-                            <p class="prezzodata">20.500$ acquistato in data 20/05/23</p>
+                            <h4><%=ordine.getProdotto()%></h4>
+                            <p><%= ordine.getNumeroprodotti() %></p>
+                            <p class="prezzodata"> acquistato in data <%= ordine.getDataacquisto() %></p>
                         </div>
                     </div>
                            <br>
@@ -46,27 +68,7 @@
     
                 </div>
 
-                <div class="prodotto">
-    
-                    <div class="containerprodotto">
-                           
-                        <div class="immagine">
-    
-                            <img src="img/audiq2.png" alt="Non ho trovato nessuna immagine">
-        
-                        </div>
-        
-                        <div class="info">
-                            <h4>Prodotto 1</h4>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis tempora vero eligendi amet eaque dolorem!</p>
-                            <p class="prezzodata">20.500$ acquistato in data 20/05/23</p>
-                        </div>
-                    </div>
-                           <br>
-                           <button class="visualizzaBtn"> <a class="a_colore" href="./prodotto.jsp">Visualizza</a></button>
-    
-    
-                </div>
+
     
                 <div id="utente">
                     <button>
@@ -78,6 +80,11 @@
     
         </div>
     </div>
+    
+     <% }} %>
+        <% } else { %>
+            <p>Nessun ordine disponibile.</p>
+        <% } %>
     
     </div>
 
