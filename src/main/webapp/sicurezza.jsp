@@ -50,7 +50,7 @@
     </table>
 
     <div class="edit-link">
-        <a href="./modificapagamento.jsp" >Modifica</a>
+        <a href="./ModificaUtenteServlet" >Modifica</a>
     </div>
 
     <br><br>
