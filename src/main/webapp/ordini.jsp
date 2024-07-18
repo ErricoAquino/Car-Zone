@@ -16,6 +16,14 @@
 <body>
 
     <%@ include file= "./fragment/header1.jsp" %>
+    
+    <%
+    HttpSession currentSession = request.getSession(false);
+    if (currentSession == null || currentSession.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
   
    <div class="spazio">
         
@@ -57,9 +65,9 @@
                         </div>
         
                         <div class="info">
-                            <h4><%=ordine.getProdotto()%></h4>
-                            <p><%= ordine.getNumeroprodotti() %></p>
-                            <p class="prezzodata"> acquistato in data <%= ordine.getDataacquisto() %></p>
+                            <h4> Titolo prodotto :<%=ordine.getProdotto()%></h4>
+                            <p> Prodotti acquistati :<%= ordine.getNumeroprodotti() %></p>
+                            <p class="prezzodata"> Acquistato in data : <%= ordine.getDataacquisto() %></p>
                         </div>
                     </div>
                            <br>
@@ -75,6 +83,8 @@
                         <a href="./utente.jsp">Torna all'account</a>
                     </button>
                 </div>
+                
+                
     
             </div>
     

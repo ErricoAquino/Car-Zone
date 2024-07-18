@@ -19,6 +19,7 @@
         <p>Grazie per il tuo pagamento!</p>
 
         <a href="./home.jsp"> <button> Torna alla home</button></a>
+          <a href="./ordini.jsp"> <button> Ordini effettuati</button></a>
     </div>
 </body>
 </html>

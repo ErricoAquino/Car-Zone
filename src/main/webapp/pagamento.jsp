@@ -68,6 +68,7 @@
                     <input type="text" id="CAP" name="CAP" placeholder="CAP" required>
                 </div>
             </div>
+            
             <button type="submit">Salva dati di pagamento</button>
         </form>
         <a href="./utente.jsp"><button>Torna al mio account</button></a>
