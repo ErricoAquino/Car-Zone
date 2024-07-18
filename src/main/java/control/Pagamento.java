@@ -53,10 +53,13 @@ public class Pagamento extends HttpServlet {
 
         try {
             pagamentoDAO.doSave(pagamento);
-            request.setAttribute("message", "Dati di pagamento salvati con successo!");
-            request.setAttribute("pagamento", pagamento);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/RetrivePagamento");
-            dispatcher.forward(request, response);
+
+            // Salva i dati di pagamento nella sessione
+            session.setAttribute("pagamento", pagamento);
+
+            // Reindirizza alla servlet PagaOrdineServlet per verificare i dati di pagamento
+            response.sendRedirect("PagaOrdineServlet");
+
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("message", "Errore durante il salvataggio dei dati di pagamento.");

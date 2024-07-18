@@ -71,7 +71,10 @@
         </div>
         <div class="costo-totale">$<%= cart.getTotale() %></div>
     </div>
-    <a href="./pagamentoeffettuato.jsp"> <button class="pulsante"> Paga ora</button></a>
+    <a href="./PagaOrdineServlet"> <button class="pulsante"> Paga ora</button></a>
+    
+    
+      
 </div>
 
 <%@ include file= "./fragment/footer.jsp" %>
