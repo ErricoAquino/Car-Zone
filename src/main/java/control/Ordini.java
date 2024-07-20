@@ -40,6 +40,7 @@ public class Ordini extends HttpServlet {
         }
 
         request.setAttribute("ordini", ordiniList);
+        request.getRequestDispatcher("/ammricercaordini.jsp").forward(request, response);
         request.getRequestDispatcher("/ordini.jsp").forward(request, response);
     }
 

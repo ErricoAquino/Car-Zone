@@ -226,6 +226,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
                     connection.close();
             }
         }
+
         return (result != 0);
     }
 
