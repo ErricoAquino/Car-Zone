@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/style-home.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="js/cart.js"></script>
+	<script src="js/home.js"></script>
+	
 </head>
 <body>
 
@@ -88,27 +90,7 @@
 
     
     
-     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var searchInput = document.getElementById('searchQuery');
-        var searchButton = document.getElementById('searchButton');
-
-        searchButton.addEventListener('click', function() {
-            var filter = searchInput.value.toLowerCase();
-            var productElements = document.querySelectorAll('.casella');
-
-            productElements.forEach(function(element) {
-                var productName = element.querySelector('.marca').innerText.toLowerCase();
-                
-                if (productName.includes(filter)) {
-                    element.style.display = 'block'; // Mostra il prodotto se il nome corrisponde alla ricerca
-                } else {
-                    element.style.display = 'none'; // Nasconde il prodotto se non corrisponde alla ricerca
-                }
-            });
-        });
-    });
-</script>
+    
      
     
     

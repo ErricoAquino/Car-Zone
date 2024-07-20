@@ -9,21 +9,8 @@
     
     <title>Registrazione</title>
     <link rel="stylesheet" href="css/style-registrazione.css">
-    <script>
-        function validateForm() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
-            var errorElement = document.getElementById("passwordError");
-
-            if (password !== confirmPassword) {
-                errorElement.textContent = "Le password non corrispondono!";
-                return false;
-            } else {
-                errorElement.textContent = "";
-            }
-            return true;
-        }
-    </script>
+    <script src="js/registrazione.js"></script>
+  
 </head>
 <body>
 
