@@ -65,10 +65,10 @@
                         </div>
                  
                         <div class="info">
-                            <h4> Titolo prodotto :<%=ordine.getProdotto()%></h4>
-                            <p> Prodotti acquistati :<%= ordine.getNumeroprodotti() %></p>
-                            <p class="prezzodata"> Acquistato in data : <%= ordine.getDataacquisto() %></p>
-                            <p class="prezzodata"> Prezzo : <%= ordine.getPrezzo() %></p>
+                            <h4> Titolo prodotto: <%=ordine.getProdotto()%></h4>
+                            <p> Prodotti acquistati: <%= ordine.getNumeroprodotti() %></p>
+                            <p class="prezzodata"> Acquistato in data: <%= ordine.getDataacquisto() %></p>
+                            <p class="prezzodata"> Prezzo: <%= ordine.getPrezzo() %></p>
                         </div>
                     </div>
                            

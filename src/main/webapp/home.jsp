@@ -82,57 +82,9 @@
         %>
 
     </section>
-    <h3 class="ditendenza"> Visualizza tutti > </h3>
-    <br>
-    <br>
     
-     <section class="sezioni">
+    
 
-       <div class="casella">
-        <img src="./img/pandablu1.png" alt="Non ho trovato l'immagine">
-        <h2 class="marca"> Fiat Panda</h2>
-        <br>
-        <h4 class="sottotitolo">2023-Benzina-6.000km</h4>
-        <br>
-        <h4 class="cambio">Automatico</h4>
-        <button class="bottone">Carrello</button>
-        <button class="visualizza"> <a href="">Visualizza</a></button>
-    </div>
-
-    <div class="casella">
-       <img src="./img/jeeprenegade1.png" alt="Non ho trovato l'immagine">
-       <h2 class="marca">Jeep Renegade</h2>
-       <br>
-       <h4 class="sottotitolo">2023-Benzina-6.000km</h4>
-       <br>
-       <h4 class="cambio">Automatico</h4>
-       <button class="bottone">Carrello</button>
-       <button class="visualizza"> <a href="">Visualizza </a></button>
-   </div>
-
-   <div class="casella">
-       <img src="./img/pegeout.png" alt="Non ho trovato l'immagine">
-       <h2 class="marca">Pegeout 2008</h2>
-       <br>
-       <h4 class="sottotitolo">2023-Benzina-6.000km</h4>
-       <br>
-       <h4 class="cambio">Automatico</h4>
-       <button class="bottone">Carrello</button>
-       <button class="visualizza"> <a href="">Visualizza</a></button>
-   </div>
-
-   <div class="casella">
-       <img src="./img/toyotayaris1.png" alt="Non ho trovato l'immagine">
-       <h2 class="marca">Toyota Yaris</h2>
-       <br>
-       <h4 class="sottotitolo">2023-Benzina-6.000km</h4>
-       <br>
-       <h4 class="cambio">Automatico</h4>
-       <button class="bottone">Carrello</button>
-       <button class="visualizza"> <a href="">Visualizza </a></button>
-   </div>
-
-</section>
 
     
     
