@@ -54,11 +54,17 @@ public class Pagamento extends HttpServlet {
         try {
             pagamentoDAO.doSave(pagamento);
 
-            // Salva i dati di pagamento nella sessione
-            session.setAttribute("pagamento", pagamento);
+            // Ottieni il ID_PAGAMENTO appena creato
+            PagamentoBean storedPagamento = pagamentoDAO.doRetrieveByKey(user.getCode());
+            if (storedPagamento != null) {
+                // Salva i dati di pagamento nella sessione
+                session.setAttribute("pagamento", storedPagamento);
 
-            // Reindirizza alla servlet PagaOrdineServlet per verificare i dati di pagamento
-            response.sendRedirect("PagaOrdineServlet");
+                // Reindirizza alla servlet PagaOrdineServlet per verificare i dati di pagamento
+                response.sendRedirect("PagaOrdineServlet");
+            } else {
+                throw new SQLException("Errore durante il recupero del pagamento appena salvato.");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

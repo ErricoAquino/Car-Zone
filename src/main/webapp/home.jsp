@@ -8,6 +8,7 @@
     <title>Carzone</title>
     <link rel="stylesheet" href="css/style-home.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="js/cart.js"></script>
 </head>
 <body>
 
@@ -64,7 +65,10 @@
                         <h4 class="sottotitolo"><%= product.getAnno_auto() %>-<%= product.getCarburante() %>-<%= product.getChilometraggio() %></h4>
                         <br>
                         <h4 class="cambio"><%= product.getCambio() %></h4>
-                        <button class="bottone"> <a class="a_colore" href="./CarrelloServlet?operation=add&productId=<%= product.getID_PRODOTTO()%>">Carrello</a></button>
+                        <button class="bottone" onclick="addToCart(<%= product.getID_PRODOTTO()%>)"> 
+                        	Carrello
+                        </button>
+                        
                         <button class="visualizza"> <a class="a_colore" href="./ProdottoServlet?idProdotto=<%= product.getID_PRODOTTO() %>">Visualizza</a></button>
                         
                      </div>

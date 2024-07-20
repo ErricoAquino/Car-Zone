@@ -1,7 +1,7 @@
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List, model.OrdiniBean, model.OrdiniDAODataSource, model.ProductBean, java.sql.SQLException"%>
+    pageEncoding="ISO-8859-1" import="java.util.List, model.OrdiniBean, model.UserBean, model.OrdiniDAODataSource, model.ProductBean, java.sql.SQLException"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +53,7 @@
 
         <div id="b">
             <div class="container">
-                
+
                 <div class="prodotto">
     
                     <div class="containerprodotto">
@@ -63,26 +63,20 @@
                             <img src="img/cintroenc3.png" alt="Non ho trovato nessuna immagine">
         
                         </div>
-        
+                 
                         <div class="info">
                             <h4> Titolo prodotto :<%=ordine.getProdotto()%></h4>
                             <p> Prodotti acquistati :<%= ordine.getNumeroprodotti() %></p>
                             <p class="prezzodata"> Acquistato in data : <%= ordine.getDataacquisto() %></p>
+                            <p class="prezzodata"> Prezzo : <%= ordine.getPrezzo() %></p>
                         </div>
                     </div>
-                           <br>
-                           <button class="visualizzaBtn"> <a class="a_colore" href="./prodotto.jsp">Visualizza</a></button>
-    
+                           
     
                 </div>
 
-
     
-                <div id="utente">
-                    <button>
-                        <a href="./utente.jsp">Torna all'account</a>
-                    </button>
-                </div>
+               
                 
                 
     
@@ -91,12 +85,20 @@
         </div>
     </div>
     
+    
+    
      <% }} %>
         <% } else { %>
             <p>Nessun ordine disponibile.</p>
         <% } %>
     
     </div>
+    
+     <div id="utente">
+                    <button>
+                        <a href="./utente.jsp">Torna all'account</a>
+                    </button>
+                </div>
 
         <%@ include file= "./fragment/footer.jsp" %>
     

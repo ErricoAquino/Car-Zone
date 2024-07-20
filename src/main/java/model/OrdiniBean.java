@@ -6,19 +6,21 @@ public class OrdiniBean implements Serializable {
     private static final long serialVersionUID = 2856723757650934254L;
 
     public OrdiniBean() {
-        Numeroprodotti = "";
+        Numeroprodotti = 0;
         Dataacquisto = "";
         Account = 0;
         Prodotto = "";
-        Pagamento="";
+        Pagamento=0;
+        Prezzo = 0;
+        Idprodotto = 0;
        
     }
 
-    public void setNumeroprodotti(String newNumeroprodotti) {
+    public void setNumeroprodotti(int newNumeroprodotti) {
         Numeroprodotti = newNumeroprodotti;
     }
 
-    public String getNumeroprodotti() {
+    public int getNumeroprodotti() {
         return Numeroprodotti;
     }
 
@@ -54,23 +56,44 @@ public class OrdiniBean implements Serializable {
         return Prodotto;
     }
     
-    public void setPagamento(String newPagamento) {
+    public void setPagamento(int newPagamento) {
         Pagamento = newPagamento;
     }
 
-    public String getPagamento() {
+    public int getPagamento() {
         return Pagamento;
+    }
+    
+    
+    
+    public void setPrezzo(double newPrezzo) {
+        Prezzo = newPrezzo;
+    }
+
+    public double getPrezzo() {
+        return Prezzo;
+    }
+    
+    
+    public void setIdprodotto(int newIdprodotto) {
+    	Idprodotto = newIdprodotto;
+    }
+
+    public int getIdprodotto() {
+        return Idprodotto;
     }
 
 
 
 
-    private String Numeroprodotti;
+    private int Numeroprodotti;
     private String Dataacquisto;
     private int Code;
     private int Account;
     private String Prodotto;
-    private String Pagamento;
+    private int Pagamento;
+    private double Prezzo;
+    private int Idprodotto;
  
 
     public void add(OrdiniBean pagamento) {

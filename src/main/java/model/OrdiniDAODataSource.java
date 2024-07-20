@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.Context;
@@ -36,6 +37,8 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
     private static final String COLUMN_ACCOUNT = "ID_ACCOUNT";
     private static final String COLUMN_NOME = "Nome_prodotto";
     private static final String COLUMN_ID_PAGAMENTO = "ID_PAGAMENTO";
+    private static final String COLUMN_PREZZO = "Prezzo";
+    private static final String COLUMN_ID_PRODOTTO = "ID_PRODOTTO";
     
 
 
@@ -43,25 +46,26 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
     public synchronized void doSave(OrdiniBean pagamento) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        OrdiniBean ordini = null;
 
         String insertSQL = "INSERT INTO " + TABLE_NAME + " (" +  COLUMN_NUMERO + ", " +
-                COLUMN_DATA + ", " + COLUMN_ACCOUNT +  ", " +COLUMN_NOME + ", " + COLUMN_ID_PAGAMENTO + ") VALUES (?, ?, ?, ?, ?)";
+                COLUMN_DATA + ", " + COLUMN_ACCOUNT +  ", " +COLUMN_NOME + ", " + COLUMN_ID_PAGAMENTO + ", " + COLUMN_PREZZO + ", " + COLUMN_ID_PRODOTTO + ") VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             connection = ds.getConnection();
             System.out.println("Database connection established for doSave");
 
             preparedStatement = connection.prepareStatement(insertSQL);
-            preparedStatement.setString(1, ordini.getNumeroprodotti());
-            preparedStatement.setString(2, ordini.getDataacquisto());
-            preparedStatement.setInt(3, ordini.getAccount());
-            preparedStatement.setString(4, ordini.getProdotto());
-            preparedStatement.setString(5, ordini.getPagamento());
+            preparedStatement.setInt(1, pagamento.getNumeroprodotti());
+            preparedStatement.setString(2, pagamento.getDataacquisto());
+            preparedStatement.setInt(3, pagamento.getAccount());
+            preparedStatement.setString(4, pagamento.getProdotto());
+            preparedStatement.setInt(5, pagamento.getPagamento());
+            preparedStatement.setDouble(6, pagamento.getPrezzo());
+            preparedStatement.setInt(7, pagamento.getIdprodotto());
            
 
             preparedStatement.executeUpdate();
-            System.out.println("Pagamento saved: " + ordini.getNumeroprodotti());
+            System.out.println("Pagamento saved: " + pagamento.getNumeroprodotti());
 
         } finally {
             try {
@@ -113,7 +117,7 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
         ResultSet rs = null;
         List<OrdiniBean> ordini = new ArrayList<>();
 
-       String selectSQL = "SELECT " + COLUMN_ID_ORDINE + ", " + COLUMN_NUMERO + ", " + COLUMN_DATA + ", " + COLUMN_ACCOUNT + ", " + COLUMN_NOME + ", " + COLUMN_ID_PAGAMENTO + " FROM " + TABLE_NAME;
+       String selectSQL = "SELECT " + COLUMN_ID_ORDINE + ", " + COLUMN_NUMERO + ", " + COLUMN_DATA + ", " + COLUMN_ACCOUNT + ", " + COLUMN_NOME + ", " + COLUMN_ID_PAGAMENTO + ", " + COLUMN_PREZZO + ", " + COLUMN_ID_PRODOTTO + " FROM " + TABLE_NAME;
 
         try {
             connection = ds.getConnection();
@@ -122,12 +126,14 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
 
             while (rs.next()) {
                 OrdiniBean ordine = new OrdiniBean();
-                ordine.setNumeroprodotti(rs.getString(COLUMN_NUMERO));
+                ordine.setNumeroprodotti(rs.getInt(COLUMN_NUMERO));
                 ordine.setDataacquisto(rs.getString(COLUMN_DATA));
                 ordine.setCode(rs.getInt(COLUMN_ID_ORDINE));
                 ordine.setAccount(rs.getInt(COLUMN_ACCOUNT));
                 ordine.setProdotto(rs.getString(COLUMN_NOME));
-                ordine.setPagamento(rs.getString(COLUMN_ID_PAGAMENTO));
+                ordine.setPagamento(rs.getInt(COLUMN_ID_PAGAMENTO));
+                ordine.setPrezzo(rs.getDouble(COLUMN_PREZZO));
+                ordine.setIdprodotto(rs.getInt(COLUMN_ID_PRODOTTO));
             
 
                 ordini.add(ordine);
@@ -169,11 +175,14 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
             while (rs.next()) {
                 OrdiniBean ordine = new OrdiniBean();
                 ordine.setCode(rs.getInt(COLUMN_ID_ORDINE));
-                ordine.setNumeroprodotti(rs.getString(COLUMN_NUMERO));
+                ordine.setNumeroprodotti(rs.getInt(COLUMN_NUMERO));
                 ordine.setDataacquisto(rs.getString(COLUMN_DATA));
                 ordine.setAccount(rs.getInt(COLUMN_ACCOUNT));
                 ordine.setProdotto(rs.getString(COLUMN_NOME));
-                ordine.setPagamento(rs.getString(COLUMN_ID_PAGAMENTO));
+                ordine.setPagamento(rs.getInt(COLUMN_ID_PAGAMENTO));
+                ordine.setPrezzo(rs.getDouble(COLUMN_PREZZO));
+                ordine.setIdprodotto(rs.getInt(COLUMN_ID_PRODOTTO));
+            
                 
 
                 ordini.add(ordine);
@@ -210,6 +219,8 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
     
     
     
+    
+    
     @Override
     public OrdiniBean doRetrieveByKey(int idOrdine) throws SQLException {
         Connection connection = null;
@@ -228,12 +239,15 @@ public class OrdiniDAODataSource implements IBeanDAO<OrdiniBean> {
 
             if (rs.next()) {
                 ordine = new OrdiniBean();
-                ordine.setNumeroprodotti(rs.getString(COLUMN_NUMERO));
+                ordine.setNumeroprodotti(rs.getInt(COLUMN_NUMERO));
                 ordine.setDataacquisto(rs.getString(COLUMN_DATA));
                 ordine.setCode(rs.getInt(COLUMN_ID_ORDINE));
                 ordine.setAccount(rs.getInt(COLUMN_ACCOUNT));
                 ordine.setProdotto(rs.getString(COLUMN_NOME));
-                ordine.setPagamento(rs.getString(COLUMN_ID_PAGAMENTO));
+                ordine.setPagamento(rs.getInt(COLUMN_ID_PAGAMENTO));
+                ordine.setPrezzo(rs.getDouble(COLUMN_PREZZO));
+                ordine.setIdprodotto(rs.getInt(COLUMN_ID_PRODOTTO));
+            
                
             }
 

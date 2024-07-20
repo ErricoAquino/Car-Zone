@@ -69,7 +69,7 @@
                 </div>
             </div>
             
-            <button type="submit">Salva dati di pagamento</button>
+            <button  type="submit">Salva dati di pagamento</button>
         </form>
         <a href="./utente.jsp"><button>Torna al mio account</button></a>
     </div>

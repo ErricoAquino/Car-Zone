@@ -22,6 +22,17 @@
      <%@ include file= "./fragment/header1.jsp" %>
      
          <h2>Catalogo</h2>
+         
+          <!-- Pulsante per aggiungere un nuovo prodotto -->
+            
+              <div class="agg-prodotto">
+                <button class="aggiungiProdottoBtn"><a class="a_colore" href="./NuovoProdottoServlet">Nuovo prodotto</a></button>
+                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./UsersServlet">Visualizza utenti e ordini</a></button>
+               
+                        
+              
+         
+        </div>
      
       <% Boolean isAdminn = (Boolean) session.getAttribute("isAdmin");
        if (isAdmin != null && isAdmin) {
@@ -82,16 +93,7 @@
     %>
 
 
-            <!-- Pulsante per aggiungere un nuovo prodotto -->
-            
-              <div class="agg-prodotto">
-                <button class="aggiungiProdottoBtn"><a class="a_colore" href="./NuovoProdottoServlet">Nuovo prodotto</a></button>
-                 <button class="aggiungiProdottoBtn"> <a class="a_colore" href="./UsersServlet">Visualizza utenti e ordini</a></button>
-               
-                        
-              
-         
-        </div>
+           
            
         <a href="logout">Esci</a>
         <%@ include file= "./fragment/footer.jsp" %>
