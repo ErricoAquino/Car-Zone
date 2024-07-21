@@ -16,7 +16,7 @@
  
     <div class="container">
         <h1>Inserisci nuova auto nel catalogo</h1>
-        <form action="NuovoProdottoServlet" method="POST" id="catalogo" enctype="multipart/form-data" >
+        <form action="NuovoProdottoServlet" method="POST" id="catalogo"  >
          
 
         

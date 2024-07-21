@@ -75,7 +75,7 @@ public class NuovoProdottoServlet extends HttpServlet {
             double Prezzo = Double.parseDouble(request.getParameter("Prezzo"));
             
           // Gestione del file immagine
-         Part filePart = request.getPart("itemImmagine");
+     /*    Part filePart = request.getPart("itemImmagine");
             String imagePath = null;
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = filePart.getSubmittedFileName();
@@ -89,7 +89,7 @@ public class NuovoProdottoServlet extends HttpServlet {
                     Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
                 imagePath = fileName; // Salva il nome del file nel database
-            } 
+            }  */
             
             
             ProductBean prodotto = new ProductBean();
@@ -113,7 +113,7 @@ public class NuovoProdottoServlet extends HttpServlet {
             prodotto.setBluetooth(Bluetooth);
             prodotto.setDescrizione(Descrizione);
             prodotto.setPrezzo(Prezzo);
-            prodotto.setImmagine(imagePath); 
+        /*    prodotto.setImmagine(imagePath); */
             
             ProductDAODataSource productDAO = new ProductDAODataSource();
             productDAO.doSave(prodotto);
