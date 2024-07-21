@@ -49,7 +49,9 @@
     
         <div class="container">
             <div class="prodotto">
-                <img id="immagine" src="img/bmw.png" alt="nessuna immagine trovata">
+                <img id="immagine" src= "img/<%= prodotto.getNome_auto() %>.png"  alt="Immagine non disponibile">
+            
+              
                 <div class="divprodotto">
                 <h3><%= prodotto.getNome_auto() %></h3>
                 <p><%= prodotto.getDescrizione() %></p>

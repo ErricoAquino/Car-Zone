@@ -37,7 +37,8 @@
 
         <!-- IMMAGINE -->
         <div class="box-immagine">
-            <img class="immagine-prodotto" src="img/audiq2.png"/>
+                 <img class="immagine-prodotto" src= "img/<%=cartItemProduct.getNome_auto()%>.png"  alt="Immagine non disponibile">
+            
         </div>
         <!-- INFO -->
 

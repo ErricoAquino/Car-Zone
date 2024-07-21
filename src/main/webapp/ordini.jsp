@@ -60,7 +60,10 @@
                            
                         <div class="immagine">
     
-                            <img src="img/cintroenc3.png" alt="Non ho trovato nessuna immagine">
+                            
+                            
+                       <img  src= "img/<%=ordine.getProdotto()%>.png"  alt="Immagine non disponibile">
+            
         
                         </div>
                  

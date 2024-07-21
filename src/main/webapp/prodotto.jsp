@@ -25,7 +25,7 @@
 
             <div id="auto">
       
-              <img src="img/audiq2.png" alt="Nessuna immagine trovata">
+                 <img src= "img/<%=p.getNome_auto()%>.png"  alt="Immagine non disponibile">
 
            </div>
     
