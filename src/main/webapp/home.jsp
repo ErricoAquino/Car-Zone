@@ -60,7 +60,7 @@
                 for (ProductBean product : products) {
         %>
                     <div class="casella">
-                    <img src="img/<=%product.getNome_auto()%>.png"  alt="Immagine non disponibile">
+                    <img src= "img/<%=product.getNome_auto()%>.png"  alt="Immagine non disponibile">
                     
                         
                         <h2 class="marca"><%= product.getNome_auto() %></h2>
