@@ -82,7 +82,7 @@
             
              <label for="itemImmagine">Foto del prodotto</label>
      
-            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/.png" required> 
+            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/png" required> 
             
         
             
