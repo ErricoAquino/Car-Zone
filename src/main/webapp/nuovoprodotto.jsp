@@ -16,7 +16,8 @@
  
     <div class="container">
         <h1>Inserisci nuova auto nel catalogo</h1>
-        <form action="NuovoProdottoServlet" method="POST" id="catalogo">
+        <form action="NuovoProdottoServlet" method="POST" id="catalogo" enctype="multipart/form-data" >
+         
 
         
         <input type="hidden" name="ID_PRODOTTO" value="">
@@ -79,9 +80,11 @@
             <label for="itemPrezzo">Prezzo</label>
             <input type="number" id="itemPrezzo" name="Prezzo" required>
             
+            <label for="itemImmagine">Foto del prodotto</label>
+     
+            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/.png" required>
             
-            <!-- <label for="itemImmagine">Foto del prodotto</label>
-            <input type="file" id="itemImmagine" name="itemImmagine" accept="image/*" required> -->
+        
             
             <button class= "aggiungi" type="submit">Aggiungi</button>
             

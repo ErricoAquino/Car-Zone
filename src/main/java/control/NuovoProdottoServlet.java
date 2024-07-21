@@ -1,6 +1,10 @@
 package control;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -11,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 import model.ProductBean;
 import model.ProductDAODataSource; 
 
@@ -68,6 +74,24 @@ public class NuovoProdottoServlet extends HttpServlet {
             String Descrizione = request.getParameter("Descrizione");
             double Prezzo = Double.parseDouble(request.getParameter("Prezzo"));
             
+          // Gestione del file immagine
+            Part filePart = request.getPart("itemImmagine");
+            String imagePath = null;
+            if (filePart != null && filePart.getSize() > 0) {
+                String fileName = filePart.getSubmittedFileName();
+                String uploadDir = getServletContext().getRealPath("/img");
+                File uploadDirFile = new File(uploadDir);
+                if (!uploadDirFile.exists()) {
+                    uploadDirFile.mkdirs();
+                }
+                File file = new File(uploadDir, fileName);
+                try (InputStream input = filePart.getInputStream()) {
+                    Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+                imagePath = fileName; // Salva il nome del file nel database
+            } 
+            
+            
             ProductBean prodotto = new ProductBean();
          
             prodotto.setNome_auto(Nome_auto);
@@ -89,6 +113,7 @@ public class NuovoProdottoServlet extends HttpServlet {
             prodotto.setBluetooth(Bluetooth);
             prodotto.setDescrizione(Descrizione);
             prodotto.setPrezzo(Prezzo);
+            prodotto.setImmagine(imagePath);
             
             ProductDAODataSource productDAO = new ProductDAODataSource();
             productDAO.doSave(prodotto);

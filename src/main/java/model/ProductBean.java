@@ -22,6 +22,7 @@ public class ProductBean {
     private String Bluetooth;
     private String Descrizione;
     private double Prezzo;
+    private String Immagine;
     
 
     // Getters and Setters
@@ -184,6 +185,14 @@ public class ProductBean {
 
     public void setPrezzo(double Prezzo) {
         this.Prezzo = Prezzo;
+    }
+    
+    public String getImmagine() {
+        return Immagine;
+    }
+
+    public void setImmagine(String Immagine) {
+        this.Immagine = Immagine;
     }
     
 
