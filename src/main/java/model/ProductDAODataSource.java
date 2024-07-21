@@ -63,7 +63,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String insertSQL = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_NOME + ", " + COLUMN_ANNO + ", " + COLUMN_GARANZIA + ", " + COLUMN_ANNOIMM + ", " + COLUMN_CAMBIO + ", " + COLUMN_POTENZA + " , " + COLUMN_CHILOMETRAGGIO + " , " + COLUMN_CARBURANTE + " , " + COLUMN_CILINDRATA + " , " + COLUMN_TARGA + " , " + COLUMN_TELAIO + " , " + COLUMN_TRAZIONE + " , " + COLUMN_POSTI + " , " + COLUMN_EMISSIONE + " , " + COLUMN_EMISSIONICO2 + " , " + COLUMN_MATERIALEVOLANTE + " , " + COLUMN_BLUETOOTH + " , " + COLUMN_DESCRIZIONE + " , " + COLUMN_PREZZO + ", " + COLUMN_IMMAGINE + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_NOME + ", " + COLUMN_ANNO + ", " + COLUMN_GARANZIA + ", " + COLUMN_ANNOIMM + ", " + COLUMN_CAMBIO + ", " + COLUMN_POTENZA + " , " + COLUMN_CHILOMETRAGGIO + " , " + COLUMN_CARBURANTE + " , " + COLUMN_CILINDRATA + " , " + COLUMN_TARGA + " , " + COLUMN_TELAIO + " , " + COLUMN_TRAZIONE + " , " + COLUMN_POSTI + " , " + COLUMN_EMISSIONE + " , " + COLUMN_EMISSIONICO2 + " , " + COLUMN_MATERIALEVOLANTE + " , " + COLUMN_BLUETOOTH + " , " + COLUMN_DESCRIZIONE + " , " + COLUMN_PREZZO + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             connection = ds.getConnection();
@@ -88,7 +88,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean> {
             preparedStatement.setString(17, product.getBluetooth());
             preparedStatement.setString(18, product.getDescrizione());
             preparedStatement.setDouble(19, product.getPrezzo());
-            preparedStatement.setString(20, product.getImmagine());
+         /*   preparedStatement.setString(20, product.getImmagine()); */
 
 
             preparedStatement.executeUpdate();
