@@ -68,9 +68,7 @@
                         <h4 class="sottotitolo"><%= product.getAnno_auto() %>-<%= product.getCarburante() %>-<%= product.getChilometraggio() %></h4>
                         <br>
                         <h4 class="cambio"><%= product.getCambio() %></h4>
-                        <button class="bottone" onclick="addToCart(<%= product.getID_PRODOTTO()%>)"> 
-                        	Carrello
-                        </button>
+                                <button class="bottone"> <a class="a_colore" href="./CarrelloServlet?operation=add&productId=<%= product.getID_PRODOTTO()%>">Carrello</a></button>
                         
                         <button class="visualizza"> <a class="a_colore" href="./ProdottoServlet?idProdotto=<%= product.getID_PRODOTTO() %>">Visualizza</a></button>
                         
