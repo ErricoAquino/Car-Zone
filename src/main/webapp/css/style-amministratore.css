@@ -159,7 +159,14 @@ button:hover {
         width: 80%;
         padding: 10px;
         font-size: 14px;
+        margin: 5px;
     }
+    
+    .eliminaBtn {
+    
+    width: 100%;
+   
+   }
 }
 
 /* Tablet */
